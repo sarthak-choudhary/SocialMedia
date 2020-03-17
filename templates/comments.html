@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+    <h3>comment on this post:</h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+        <table>
+
+            {{ form.as_table }}
+
+        </table>
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

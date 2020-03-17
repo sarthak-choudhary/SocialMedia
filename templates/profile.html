@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+    <h1>My Profile</h1>
+    <div>
+        <h2>{{ username }}</h2>
+      <img src="{{ profile_pic.url }}">
+        <ul>
+            <li>
+                Name: {{ name }}
+            </li>
+    
+            <li>
+                Birthdate: {{ birthdate }}
+            </li>
+            
+            <li>
+                Followers: {{ tot_followers }}
+            </li>
+            
+            <li>
+                Following: {{ tot_following }}
+            </li>
+            
+            <li>
+                About: {{ about }}
+            </li>
+       
+        {% for user in users %}
+            {% if request.user.profile in user.profile.followers.all %}
+                <li><a href="{% url 'social:unfollow' id=user.id %}">UNFOLLOW</a>      {{ user.username}}</li>
+            {% else %}
+                <li><a href="{% url 'social:follow' id=user.id %}">FOLLOW</a>     {{ user.username}}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        <h6>UPDATE YOUR PROFILE : </h6>
+        <a href="{% url 'social:update_profile' %}">click here</a>
+    </div>
+
+
+{% endblock %}
+

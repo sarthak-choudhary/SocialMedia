@@ -1,0 +1,26 @@
+{% extends "base.html" %}sss
+{% load socialaccount %}
+{% providers_media_js %}
+{% block body_block %}
+    {% if user.is_authenticated %}
+        <div class="jumbotron">
+            <div class="container">
+                <h3>EXPLORE YOUR FEED, CONNECT TO YOUR FRIENDS , MANAGE YOUR PROFILE AND MANY MORE</h3>
+            </div>
+        </div>
+    
+    {% else %}
+        <div class="jumbotron">
+            <div class="container">
+            <h1>Welcome to SOCIALNETWORK ! </h1>
+            <h2>Please <a href="{% url 'Accounts:user_login' %}">LOGIN</a>
+                or 
+            <a href="{% url 'Accounts:register' %}">REGISTER</a>to access SOCIAL NETWORK</h2><br>
+            <a href="{% provider_login_url 'google' %}">GOOGLE LOGIN</a>
+            
+
+            </div>
+         </div>
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<div class="container">
+    <h2>
+        CREATE A NEW POST:
+    </h2>
+    <h1>You are {{ request.user.username }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+    
+
+</div>
+
+
+
+{% endblock %}

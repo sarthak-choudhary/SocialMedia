@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+<div>
+    Proceed if you want to delete the post.
+    <form action="" method="POST">
+        {% csrf_token %}
+    <input type="submit" value="confirm">
+    <a href="{}">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

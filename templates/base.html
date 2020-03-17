@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <meta charset="UTF-8">
+
+    <title>SOCIAL NETWORK</title>
+    
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+
+            <a class="navbar-brand" href="{% url 'index' %}">SOCIAL NETWORK</a>
+
+        </div>
+        {% if user.is_authenticated %}
+        <ul class="nav navbar-nav">
+
+            <li><a href="{% url 'social:home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+
+            <li><a href="{% url 'social:feed' %}"><span class="glyphicon glyphicon-menu-hamburger"></span> Your Feed</a></li>
+
+            <li><a href="{% url 'social:post' %}"><span class="glyphicon glyphicon-pencil"></span> New Post</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="{% url 'social:profile' id=user.id %}"><span class="glyphicon glyphicon-user"></span>{{ request.user.username }}</a></li>
+
+                <li><a href="{% url 'Accounts:user_logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+        {% else %}
+
+        <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'Accounts:user_login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                <li><a href="{% url 'Accounts:register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        </ul>    
+
+        <p>
+            <h1></h1>
+        </p>
+        {% endif %}
+
+        
+
+    </div>
+
+</nav>
+
+{% block body_block %}
+
+{% endblock %}
+
+
+
+</body>
+
+</html>

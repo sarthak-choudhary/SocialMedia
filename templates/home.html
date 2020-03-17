@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+    <h1>Recent Posts</h1>
+    
+        {% if post_records %}
+            {% for posts in post_records %}
+                <a href="post/{{ posts.id }}"><div class="jumbotron">
+                    <div class="container">
+                        <h3>POST BY : {{ posts.author }} </h3>
+                        <h4>TITLE-{{ posts.title }}</h4>
+                        <p>{{ posts.message }}</p><br>
+                        
+                    </a>
+                     
+                    </div>
+                </div>
+            
+            {% endfor %}
+
+        {% else %}
+            <p>No Recent Posts!!!!</p>
+        {% endif %}
+    
+{% endblock %}

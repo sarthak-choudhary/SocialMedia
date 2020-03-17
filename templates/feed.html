@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block body_block %}
+    <h1>Recent Posts</h1>
+            {%for posts in post_records%}
+                <a href="post/{{ posts.id }}"><div class="jumbotron">
+                    <div class="container">
+                        <h4>TITLE-{{ posts.title }}</h4>
+                        <h3>POST BY : {{ posts.author }} </h3>
+                        <p>{{ posts.message }}</p><br>    
+                    </a>                     
+                    </div>
+                </div>
+            
+            {% endfor %}
+
+        
+            <p>No More Posts!!!!</p>
+
+{% endblock %}
